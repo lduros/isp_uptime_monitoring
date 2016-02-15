@@ -4,7 +4,7 @@ Author Loic J. Duros / Released under the GPLv3
   
 ## Overview
 
-   ISP Uptime Monitoring is a small Python script to run from the command line with a similar purpose as the proprietary Windows "Net Uptime Monitor".
+   ISP Uptime Monitoring is a small Python script to run from the command line with a similar purpose as the proprietary Windows    program "Net Uptime Monitor".
    It checks your connection without requiring root unlike the usual ICMP scripts and outputs the status regularly.  
    Use >> [filename] at the end of script call to output to a log file and let it run to gather data for your ISP support calls.
    
