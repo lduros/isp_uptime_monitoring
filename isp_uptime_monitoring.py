@@ -63,7 +63,7 @@ def print_header():
     print "\n\n"
     print template.format(TIME=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), LENGTH="Log Starting", ERROR="")    
     print_separator()
-    print template.format(TIME="Failure Start", LENGTH="Duration", ERROR="Error")
+    print template.format(TIME="Failure Start/End", LENGTH="Duration", ERROR="Error")
     print_separator()
 
 
@@ -83,7 +83,7 @@ def monitor_connection():
             check_connectivity()
             if failure_start:
                 failure_end = int(time.time() - failure_start)
-                failure_time = datetime.datetime.fromtimestamp(failure_start).strftime("%Y-%m-%d %H:%M:%S")
+                failure_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 print template.format(TIME=failure_time,
                                       LENGTH=failure_end,
                                       ERROR=current_error)
@@ -94,7 +94,7 @@ def monitor_connection():
             if not failure_start:
                 failure_start = time.time()
                 print template.format(TIME=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                                      LENGTH="ongoing",
+                                      LENGTH="started",
                                       ERROR=current_error)
         try:
             # check more often if there's already an issue.

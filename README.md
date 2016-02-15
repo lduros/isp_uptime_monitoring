@@ -11,7 +11,8 @@ Author Loic J. Duros / Released under the GPLv3
 ## Details
   It checks your connection against a host or a list of hosts (Default is Google, please change) every 5 seconds. 
   If an error occurs (any type of error), the check interval is decreased to 1 second and a row is output to inform the user
-  that a failure is ongoing. Once the script is able to contact the host(s) again, a new row is output with the start
+  that a failure is ongoing with the start time.
+  Once the script is able to contact the host(s) again, a new row is output with the end
   datetime of the failure, as well as the duration in seconds.
   The error is there just so we can tell what exactly is going on and that it isn't a false alarm.
    
