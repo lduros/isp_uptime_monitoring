@@ -1,6 +1,6 @@
 # ISP Uptime Monitoring
 
-Copyrights Loic J. Duros / Released under the GPLv3
+Author Loic J. Duros / Released under the GPLv3
   
 ## Overview
 
