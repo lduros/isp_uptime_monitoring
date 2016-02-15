@@ -15,7 +15,7 @@ Author Loic J. Duros / Released under the GPLv3
   datetime of the failure, as well as the duration in seconds.
   The error is there just so we can tell what exactly is going on and that it isn't a false alarm.
    
-   Typical output:
+## Typical output:
     
                                           ISP Uptime Monitoring Tool                                        
 
