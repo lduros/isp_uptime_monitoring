@@ -61,9 +61,9 @@ def print_header():
     print "\n\n"
     print "{0:^105}".format("ISP Uptime Monitoring Tool")
     print "\n\n"
-    print template.format(TIME="Failure Start", LENGTH="Duration", ERROR="Error")
-    print_separator()
     print template.format(TIME=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), LENGTH="Log Starting", ERROR="")    
+    print_separator()
+    print template.format(TIME="Failure Start", LENGTH="Duration", ERROR="Error")
     print_separator()
 
 
