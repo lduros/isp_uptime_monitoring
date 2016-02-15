@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 """
-   ISP Uptime Monitoring. Checks your connection every 5 seconds. 
-   Use >> at the end of script call to output to a log file.
+   ISP Uptime Monitoring. A small script to check your connection
+   every 5 seconds.  Use >> at the end of script call to output to a
+   log file.
 
    Copyright (C) 2016  Loic J. Duros
 
@@ -21,22 +22,22 @@
    Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 
 """
-import sys
 import socket
 import time
 import datetime
-import time
 
 template = "{TIME:^25}|{LENGTH:^20}|{ERROR:^50}"
 
-normal_interval = 5
-error_interval = 1
- 
+normal_interval = 5  # seconds between which connection is checked.
+error_interval = 1   # seconds between which connection is checked in case of issue.
+
+
 def check_connectivity(hosts=None, port=80):
     """
     Check a site/port to see if connected to the Internet. Default is
     set to Google on Port 80, but it could and probably should be
-    changed to one or more sites.
+    changed to one or more sites. Please change IP from Google to
+    another resource or set of resources.
     """
     if not hosts:
         hosts = ["8.8.8.8"]
@@ -45,18 +46,26 @@ def check_connectivity(hosts=None, port=80):
         socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
     return True
 
+
 def print_separator(size=105):
     """
     Print a separator for the table.
     """
     print "-" * size
 
+    
 def print_header():
-    print "Monitor your ISP"
-    print template.format(TIME="Failure Start", LENGTH="Length", ERROR="Error")
+    """
+    Prints header when script execution starts.
+    """
+    print "\n\n"
+    print "{0:^105}".format("ISP Uptime Monitoring Tool")
+    print "\n\n"
+    print template.format(TIME="Failure Start", LENGTH="Duration", ERROR="Error")
     print_separator()
     print template.format(TIME=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), LENGTH="Log Starting", ERROR="")    
     print_separator()
+
 
 def monitor_connection():
     """
@@ -74,7 +83,10 @@ def monitor_connection():
             check_connectivity()
             if failure_start:
                 failure_end = int(time.time() - failure_start)
-                print template.format(TIME=datetime.datetime.fromtimestamp(failure_start).strftime("%Y-%m-%d %H:%M:%S"), LENGTH=failure_end, ERROR=current_error)
+                failure_time = datetime.datetime.fromtimestamp(failure_start).strftime("%Y-%m-%d %H:%M:%S")
+                print template.format(TIME=failure_time,
+                                      LENGTH=failure_end,
+                                      ERROR=current_error)
                 print_separator()
                 failure_start = None
         except Exception as ex:
@@ -83,14 +95,15 @@ def monitor_connection():
                 failure_start = time.time()
                 print template.format(TIME=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), LENGTH="started", ERROR=current_error)
         try:
+            # check more often if there's already an issue.
             if failure_start:
-                # check more often.
                 time.sleep(normal_interval)
             else:
                 time.sleep(error_interval)
         except KeyboardInterrupt:
             print "\nGood bye! Hope your ISP issues are resolved!"
             exit()
-    
+
+
 if __name__ == "__main__":
     monitor_connection()
