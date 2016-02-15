@@ -6,7 +6,7 @@ Author Loic J. Duros / Released under the GPLv3
 
    ISP Uptime Monitoring is a small Python script to run from the command line.
    It checks your connection without requiring root unlike the usual ICMP scripts and outputs the status regularly.  
-   Use >> at the end of script call to output to a log file and let it run to gather data for your ISP support calls.
+   Use >> [filename] at the end of script call to output to a log file and let it run to gather data for your ISP support calls.
    
 ## Details
   It checks your connection against a host or a list of hosts (Default is Google, please change) every 5 seconds. 
