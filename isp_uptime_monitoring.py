@@ -82,10 +82,10 @@ def monitor_connection():
         try:
             check_connectivity()
             if failure_start:
-                failure_end = int(time.time() - failure_start)
-                failure_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                print template.format(TIME=failure_time,
-                                      LENGTH=failure_end,
+                failure_length = int(time.time() - failure_start)
+                failure_end = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                print template.format(TIME=failure_end,
+                                      LENGTH=failure_length,
                                       ERROR=current_error)
                 print_separator()
                 failure_start = None
