@@ -99,9 +99,9 @@ def monitor_connection():
         try:
             # check more often if there's already an issue.
             if failure_start:
-                time.sleep(normal_interval)
-            else:
                 time.sleep(error_interval)
+            else:
+                time.sleep(normal_interval)
         except KeyboardInterrupt:
             print "\nGood bye! Hope your ISP issues are resolved!"
             exit()
