@@ -94,7 +94,7 @@ def monitor_connection():
             if not failure_start:
                 failure_start = time.time()
                 print template.format(TIME=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                                      LENGTH="started",
+                                      LENGTH="ongoing",
                                       ERROR=current_error)
         try:
             # check more often if there's already an issue.
