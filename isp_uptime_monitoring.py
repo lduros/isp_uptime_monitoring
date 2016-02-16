@@ -40,7 +40,7 @@ def check_connectivity(hosts=None, port=80):
     another resource or set of resources.
     """
     if not hosts:
-        hosts = ["8.8.8.8"]
+        hosts = ["google.com"]
     for host in hosts:
         socket.setdefaulttimeout(1)
         socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
